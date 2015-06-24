@@ -40,11 +40,14 @@ class LineJPanel extends JPanel implements ActionListener
     // draw rectangles and arcs
     public void paintComponent( Graphics g ) {
         super.paintComponent( g ); // call superclass's paintComponent
-        g.setColor(Color.red);
+        Graphics2D g2d = ( Graphics2D ) g;
+        g2d.setColor(Color.red);
+        g2d.setStroke(new BasicStroke(10));
 
         Random random = new Random();
 
-        Line2D.Double(random);
+        Line2D.Double line = new Line2D.Double(20, 22, 40, 42);
+        g2d.draw(line);
     }
 
 
