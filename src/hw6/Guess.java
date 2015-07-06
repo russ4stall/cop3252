@@ -1,28 +1,74 @@
 package hw6;
 
+import hw2.IntegerSet;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
-/**
- * @author Russ Forstall
- */
 public class Guess {
-    public static void main( String args[] ) {
-        Random random = new Random();
-        int num = random.nextInt(999) + 1;
+    private int number;
+    private JFrame frame;
+    private JLabel statusLabel;
+    private JPanel panel;
 
-        JFrame frame = new JFrame("Guess");
+    public Guess(){
+        init();
+    }
+
+    public static void main(String[] args){
+        Guess guess = new Guess();
+        guess.guess();
+    }
+
+    private void init(){
+        number = new Random().nextInt(999) + 1;
+
+        frame = new JFrame("Guess");
+        frame.setSize(400,400);
+        frame.setLayout(new FlowLayout());
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE);
-        frame.setSize(350, 100); // set frame size
-        frame.setBackground(Color.WHITE);
+        statusLabel = new JLabel("",JLabel.CENTER);
 
-        GuessPanel guessPanel = new GuessPanel();
-        frame.add(guessPanel);
+        statusLabel.setSize(350,100);
 
-        frame.setVisible(true); // display frame
+        panel = new JPanel();
+        panel.setLayout(new FlowLayout());
 
+        frame.add(panel);
+        frame.add(statusLabel);
+        frame.setVisible(true);
+    }
+
+    private void guess(){
+
+        JLabel guessLabel= new JLabel("Guess: ", JLabel.RIGHT);
+        final JTextField userGuessField = new JTextField(4);
+
+        userGuessField.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String data = "Guess: " + userGuessField.getText();
+                int guess = Integer.parseInt( userGuessField.getText());
+                int guessResult = guessAction(guess);
+                if (  guessResult > 0 ) {
+                    // warmer
+                } else if( )
+
+                statusLabel.setText(data);
+                frame.setBackground(Color.RED);
+            }
+        });
+
+        panel.add(guessLabel);
+        panel.add(userGuessField);
+        frame.setVisible(true);
+    }
+
+    private int guessAction(int guess) {
+
+
+        return 1;
     }
 }
-

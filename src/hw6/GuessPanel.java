@@ -21,7 +21,6 @@ public class GuessPanel extends JPanel {
 
     }
 
-
     private class GuessTextFieldHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent event) {
@@ -32,6 +31,7 @@ public class GuessPanel extends JPanel {
             }
 
             JOptionPane.showMessageDialog( null, s );
+            //paintComponent(g);
 
         }
     }
